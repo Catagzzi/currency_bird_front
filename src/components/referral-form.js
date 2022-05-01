@@ -4,8 +4,31 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+const initialFormData = Object.freeze({
+    email: "",
+    name: "",
+  });
+
+
 
 export default function BasicTextFields() {
+    const [email, updateEmail] = React.useState();
+    const [name, updateName] = React.useState();
+    const handleChangeEmail = (e) => {
+        console.log("BBBBBB", e.target.value)
+        updateEmail(e.target.value);
+        console.log(email)
+      };
+    const handleChangeName = (e) => {
+    console.log("BBBBBB", e.target.value)
+    updateName(e.target.value);
+    console.log(name)
+    };
+    const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('enviando datos...' + name + ' ' + email)
+    // ... submit to API or something
+    };
   return (
     <Box
       component="form"
@@ -23,10 +46,16 @@ export default function BasicTextFields() {
             </p>
         </Typography>
         <br/>
-        <TextField id="outlined-email" label="Email" variant="outlined" />
-        <TextField id="outlined-Name" label="Nombre Completo" variant="outlined" />
+        <TextField name="email" label="Email" variant="outlined"  onChange={handleChangeEmail}/>
+        <TextField name="name" label="Nombre Completo" variant="outlined"  onChange={handleChangeName}/>
         <br/>
-        <Button id="referral-link-button" variant="contained">Compartir</Button>
+        <Button id="referral-link-button" variant="contained" onClick={handleSubmit}>Compartir</Button>
+        <li>
+            {name}
+        </li>
+        <li>
+            {   email}
+        </li>
     </Box>
   );
 }
