@@ -1,11 +1,9 @@
 
-import '../App.css';
 import Header from '../components/header'
 import ReferralForm from '../components/referral-form'
-// import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 
-const Home = () =>   {
+const Referral = () =>   {
     return (
       <div className="App">
         <div >
@@ -25,4 +23,4 @@ const Home = () =>   {
       </div>
     );
   }
-  export default Home;
+  export default Referral;
