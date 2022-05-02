@@ -25,7 +25,8 @@ export default function BasicTextFields(props) {
     const success = props.success;
     const link = props.link;
     if (success === 200) {
-      let referralLink = <a href={link}> {link}</a>;
+      let path= "/register/invite/"+link
+      let referralLink = <a href={path} > localhost:3000/register/invite/{link}</a>;
       return <Grid style={{ width:"100%"}}> Tu link de referido es: {referralLink} </Grid>;
     }
     if (success === 404) {

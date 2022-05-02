@@ -109,8 +109,6 @@ export default function RegisterUser(props) {
       >
         Registrarse
       </Button>
-      <br/>
-      <p>Ha seleccionado:{name}, {email}, {address}, {sex}, localhost:3000/register/invite/{referral} </p>
       <Greeting success={props.resCode} link={props.resLink}></Greeting>
     </Box>
   );
