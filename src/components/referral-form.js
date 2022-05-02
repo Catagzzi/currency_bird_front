@@ -30,7 +30,7 @@ export default function BasicTextFields(props) {
     }
     if (success === 404) {
       let aqui = <a href={"/register"}> aquí</a>;
-      return <Grid style={{ width:"100%"}}>Usuario no encontrado. Por favor escriba un mail correcto. <br/> Si usted no se ha registrado, por favor hágalo {aqui}. </Grid>
+      return <Grid style={{ width:"100%"}}>Usuario no encontrado. Por favor escriba un email correcto. <br/> Si usted no se ha registrado, por favor hágalo {aqui}. </Grid>
     }
     if (success === 500) {
       return <Grid style={{ width:"100%"}}>Surgió un error al obtener el link de referido, por favor inténtelo de nuevo</Grid>

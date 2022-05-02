@@ -5,16 +5,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
 
 export default function RegisterUser(props) {
-  const [email, updateEmail] = useState();
-  const [name, updateName] = React.useState();
-  const [address, updateAddress] = React.useState();
-  const [sex, updateSex] = React.useState('FEMALE');
-  const [referral, updateReferral] = useState("")
+  const [email, updateEmail] = useState('');
+  const [name, updateName] = React.useState('');
+  const [address, updateAddress] = React.useState('');
+  const [sex, updateSex] = React.useState('');
+  const [referral, updateReferral] = React.useState("")
+  const sexOptions = [
+    {value: "MALE", label: "Masculino"},
+    {value: "FEMALE", label: "Femenino"},
+    {value: "NON_BINARY", label: "No Informar"},
+  ]
 
   useEffect( () => {
     let url = window.location.href
@@ -45,12 +47,6 @@ export default function RegisterUser(props) {
 
   const handleChange = (event) => {
     updateSex(event.target.value);
-    // const { value } = event.target;
-    // updateSex({value});
-    // updateSex(value);
-    // console.log("value", value.props.value)
-    //const sexName = value.props.value
-    console.log("ACTUAL",sex)
   };
 
 
@@ -58,15 +54,14 @@ export default function RegisterUser(props) {
     const success = props.success;
     const link = props.link;
     if (success === 200) {
-      let referralLink = <a href={link}> {link}</a>;
-      return <Grid style={{ width:"100%"}}> Tu link de referido es: {referralLink} </Grid>;
+      let referralLink = <a href={link}> localhost:3000/register/link{link}</a>;
+      return <Grid style={{ width:"100%"}}> Usuario registrado correctamente con el link: {referralLink} </Grid>;
     }
-    if (success === 404) {
-      let aqui = <a href={"/register"}> aquí</a>;
-      return <Grid style={{ width:"100%"}}>Usuario no encontrado. Por favor escriba un mail correcto. <br/> Si usted no se ha registrado, por favor hágalo {aqui}. </Grid>
+    if (success === 409) {
+      return <Grid style={{ width:"100%"}}>El usuario ya se encuentra registrado.</Grid>
     }
     if (success === 500) {
-      return <Grid style={{ width:"100%"}}>Surgió un error al obtener el link de referido, por favor inténtelo de nuevo</Grid>
+      return <Grid style={{ width:"100%"}}>Surgió un error al registrar el usuario: <br/> Nombre: {name}, Email: {email} <br/> Por favor inténtelo de nuevo</Grid>
     }
     return <p></p>;
   }
@@ -80,37 +75,43 @@ export default function RegisterUser(props) {
       noValidate
       autoComplete="off"
     >
-        <Typography
-            variant="h7"
-            >
-            <p>
-            Para registrarse, ingrese sus datos
-            </p>
-        </Typography>
-        <br/>
-        <TextField required name="name" label="Nombre Completo" variant="outlined"  onChange={handleChangeName}/>
-        <br/>
-        <TextField required name="email" label="Email" variant="outlined"  onChange={handleChangeEmail} />
-        <br/>
-        <TextField required name="address" label="Dirección" variant="outlined"  onChange={handleChangeAddress} />
-        <br/>
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Sexo</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={sex}
+      <Typography
+          variant="h7"
+          >
+          <p>
+          Para registrarse, ingrese sus datos
+          </p>
+      </Typography>
+      <br/>
+      <TextField required name="name" label="Nombre Completo" variant="outlined"  onChange={handleChangeName}/>
+      <br/>
+      <TextField required name="email" label="Email" variant="outlined"  onChange={handleChangeEmail} />
+      <br/>
+      <TextField required name="address" label="Dirección" variant="outlined"  onChange={handleChangeAddress} />
+      <br/>
+      <TextField
+          id="outlined-select-sex"
+          select
           label="Sexo"
+          value={sex}
           onChange={handleChange}
         >
-          <MenuItem value={"FEMALE"}>Femenino</MenuItem>
-          <MenuItem value={"MALE"}>Maculino</MenuItem>
-          <MenuItem value={"NON_BINARY"}>No informar</MenuItem>
-        </Select>
-      </FormControl>
-        <Button id="referral-link-button" variant="contained" onClick={() => props.getLink(email)}>Registrarse</Button>
-        <br/>
-        <Greeting success={props.resCode} link={props.resLink}></Greeting>
+          {sexOptions.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      <Button 
+        id="referral-link-button" 
+        variant="contained" 
+        onClick={() => props.register(name, email, address, sex, referral)}
+      >
+        Registrarse
+      </Button>
+      <br/>
+      <p>Ha seleccionado:{name}, {email}, {address}, {sex}, localhost:3000/register/invite/{referral} </p>
+      <Greeting success={props.resCode} link={props.resLink}></Greeting>
     </Box>
   );
 }

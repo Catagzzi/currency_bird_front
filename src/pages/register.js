@@ -6,12 +6,16 @@ import Grid from '@mui/material/Grid'
 const Referral = () =>   {
   const [response, setResponse] = useState("")
 
-  function getLink(email) {
-    fetch('http://localhost:3050/users/referral/create', {
+  function register(name, email,address, sex, link ) {
+    fetch('http://localhost:3050/users/register', {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          name: name,
           email: email,
+          address: address,
+          sex: sex,
+          referral_link: link,
         })
     })
         .then(response => response.json())
@@ -33,7 +37,7 @@ const Referral = () =>   {
             container justify="center"
             alignItems="center"
             style={{ minHeight: "90vh", width:"30%"}}>
-            <RegisterForm getLink={getLink} resCode={response.code} resMsg={response.message} resLink={response.result}/>
+            <RegisterForm register={register} resCode={response.code} resMsg={response.message}/>
           </Grid >
         </Grid>
     </div>
