@@ -56,14 +56,15 @@ export default function RegisterUser(props) {
     if (success === 200) {
       let referralLink = <a href={link}> localhost:3000/register/link{link}</a>;
       return <Grid style={{ width:"100%"}}> Usuario registrado correctamente con el link: {referralLink} </Grid>;
-    }
-    if (success === 409) {
+    } else if (success === 409) {
       return <Grid style={{ width:"100%"}}>El usuario ya se encuentra registrado.</Grid>
-    }
-    if (success === 500) {
+    } else if (success === 500) {
       return <Grid style={{ width:"100%"}}>Surgió un error al registrar el usuario: <br/> Nombre: {name}, Email: {email} <br/> Por favor inténtelo de nuevo</Grid>
+    } else if (success === 404) {
+      return <Grid style={{ width:"100%"}}>El link de referido no es válido. <br/> Por favor verifique en link.</Grid>
+    }else {
+      return <p></p>;
     }
-    return <p></p>;
   }
 
   return (
