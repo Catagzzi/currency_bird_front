@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid'
 
 const Table = () =>   {
     const [users, setUsers] = useState([]);
-    const [response, setResponse] = useState(null);
+    // const [response, setResponse] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:3050/users/summary_table')
@@ -26,12 +26,19 @@ const Table = () =>   {
           container justify="center" direction="column"
           alignItems="center"
         >
-          <Grid
+            <Grid
             container justify="center"
             alignItems="center"
-            style={{ minHeight: "90vh", width:"30%"}}>
+            style={{ width:"20%"}}>
+                <h2>Control de Invitaciones</h2>
+            </Grid>
+            <Grid
+            container justify="center"
+            alignItems="center"
+            style={{ minHeight: "60vh", width:"60%"}}>
+            <br/>
             <SummaryTable users={users} />
-          </Grid >
+            </Grid >
         </Grid>
     </div>
   );

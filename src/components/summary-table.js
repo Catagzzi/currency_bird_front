@@ -10,10 +10,10 @@ import Paper from '@mui/material/Paper';
 export default function SummaryTable(props) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 50 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell> Nombre</TableCell>
+            <TableCell > Nombre</TableCell>
             <TableCell align="right">Invitaciones</TableCell>
             <TableCell align="right">Dinero Ganado</TableCell>
           </TableRow>
