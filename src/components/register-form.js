@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -10,10 +10,20 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 
 export default function RegisterUser(props) {
-    const [email, updateEmail] = React.useState();
-    const [name, updateName] = React.useState();
-    const [address, updateAddress] = React.useState();
-    const [sex, updateSex] = React.useState('FEMALE');
+  const [email, updateEmail] = useState();
+  const [name, updateName] = React.useState();
+  const [address, updateAddress] = React.useState();
+  const [sex, updateSex] = React.useState('FEMALE');
+  const [referral, updateReferral] = useState("")
+
+  useEffect( () => {
+    let url = window.location.href
+    if (url.includes("invite")) {
+      //anexar a la request (post)
+      let link = url.split("/")
+      updateReferral(link.at(5))
+    }
+  }, [])
 
   const handleChangeEmail = (e) => {
     console.log("BBBBBB", e.target.value)
@@ -34,7 +44,7 @@ export default function RegisterUser(props) {
   };
 
   const handleChange = (event) => {
-      updateSex(event.target.value);
+    updateSex(event.target.value);
     // const { value } = event.target;
     // updateSex({value});
     // updateSex(value);

@@ -14,7 +14,8 @@ function App() {
     <Router>
       <Routes>
           <Route path="/referral" element={<Referral/>} />
-          <Route path="/register" element={<RegisterUser/>} />
+          <Route path="/register/" element={<RegisterUser/>} />
+          <Route path="/register/:invite/:id" element={<RegisterUser/>} />
           <Route path="/admin" element={<SummaryTable/>} />
       </Routes>
     </Router>
