@@ -5,7 +5,6 @@ import SummaryTable from './pages/summaryTable'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Routes
 } from "react-router-dom";
 

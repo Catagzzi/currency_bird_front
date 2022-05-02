@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 export default function BasicTextFields(props) {
   const [email, updateEmail] = React.useState();
   const [name, updateName] = React.useState();
+  let REACT_APP_PORT= process.env.PORT
 
   const handleChangeEmail = (e) => {
     console.log("BBBBBB", e.target.value)
@@ -26,7 +27,7 @@ export default function BasicTextFields(props) {
     const link = props.link;
     if (success === 200) {
       let path= "/register/invite/"+link
-      let referralLink = <a href={path} > localhost:3000/register/invite/{link}</a>;
+      let referralLink = <a href={path} > localhost:{REACT_APP_PORT}/register/invite/{link}</a>;
       return <Grid style={{ width:"100%"}}> Tu link de referido es: {referralLink} </Grid>;
     }
     if (success === 404) {
