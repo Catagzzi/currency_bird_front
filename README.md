@@ -26,7 +26,7 @@ Considering that the port registered in the ```.env``` file is 3000, the routes 
 4) Summary table view
 > Path: ```localhost:3000/admin```
 
-## **5) Improvement**
+## **5) Posible Improvements**
 1) Improvement of project organization for better scalability.
 2) Data validation in text fields, for example, that they are not empty and have the correct maximum length.
 3) Implementation of unit tests and integration tests.
