@@ -1,4 +1,4 @@
-# Currency Bird Front
+# CurrencyBird Front
 The frontend of a platform that implements a referral system.
 
 ## **1) Requirements**
