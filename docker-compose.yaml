@@ -5,4 +5,4 @@ services:
     ports:
       - $PORT:3000
     volumes:
-      - ./:/app
+      - ./src:/app/src
