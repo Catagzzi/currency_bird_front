@@ -2,6 +2,7 @@ import './App.css';
 import Referral from './pages/referral'
 import RegisterUser from './pages/register'
 import SummaryTable from './pages/summaryTable'
+import Home from './pages/home'
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +17,7 @@ function App() {
           <Route path="/register/" element={<RegisterUser/>} />
           <Route path="/register/invite/:id" element={<RegisterUser/>} />
           <Route path="/admin" element={<SummaryTable/>} />
+          <Route path="/" element={<Home/>} />
       </Routes>
     </Router>
   );
