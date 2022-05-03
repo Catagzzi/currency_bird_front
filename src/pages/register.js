@@ -8,20 +8,20 @@ const Referral = () =>   {
 
   function register(name, email,address, sex, link ) {
     fetch('http://localhost:3050/users/register', {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          address: address,
-          sex: sex,
-          referral_link: link,
-        })
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        address: address,
+        sex: sex,
+        referral_link: link,
+      })
     })
-        .then(response => response.json())
-        .then(data => {
-          setResponse(data)
-        });
+    .then(response => response.json())
+    .then(data => {
+      setResponse(data)
+    });
   }
 
   return (

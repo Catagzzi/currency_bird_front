@@ -14,10 +14,10 @@ const Referral = () =>   {
           email: email,
         })
     })
-        .then(response => response.json())
-        .then(data => {
-          setResponse(data)
-        });
+    .then(response => response.json())
+    .then(data => {
+      setResponse(data)
+    });
   }
 
   return (
@@ -32,7 +32,8 @@ const Referral = () =>   {
           <Grid
             container justify="center"
             alignItems="center"
-            style={{ minHeight: "90vh", width:"50%"}}>
+            style={{ minHeight: "90vh", width:"50%"}}
+          >
             <ReferralForm getLink={getLink} resCode={response.code} resMsg={response.message} resLink={response.result}/>
           </Grid >
         </Grid>

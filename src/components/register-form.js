@@ -21,7 +21,6 @@ export default function RegisterUser(props) {
   useEffect( () => {
     let url = window.location.href
     if (url.includes("invite")) {
-      //anexar a la request (post)
       let link = url.split("/")
       updateReferral(link.at(5))
     }
@@ -75,12 +74,10 @@ export default function RegisterUser(props) {
       noValidate
       autoComplete="off"
     >
-      <Typography
-          variant="h7"
-          >
-          <h4>
+      <Typography variant="h7">
+        <h4>
           Para registrarse, ingrese sus datos
-          </h4>
+        </h4>
       </Typography>
       <br/>
       <TextField required name="name" label="Nombre Completo" variant="outlined"  onChange={handleChangeName}/>
@@ -90,18 +87,18 @@ export default function RegisterUser(props) {
       <TextField required name="address" label="Dirección" variant="outlined"  onChange={handleChangeAddress} />
       <br/>
       <TextField
-          id="outlined-select-sex"
-          select
-          label="Sexo"
-          value={sex}
-          onChange={handleChange}
-        >
-          {sexOptions.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        id="outlined-select-sex"
+        select
+        label="Sexo"
+        value={sex}
+        onChange={handleChange}
+      >
+        {sexOptions.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
       <Button 
         id="referral-link-button" 
         variant="contained" 

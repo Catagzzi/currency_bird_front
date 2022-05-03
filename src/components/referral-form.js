@@ -49,12 +49,10 @@ export default function BasicTextFields(props) {
       noValidate
       autoComplete="off"
     >
-        <Typography
-            variant="h7"
-            >
-            <p>
+        <Typography variant="h7">
+          <p>
             Por favor rellene los siguientes campos para obtener su link de referidos
-            </p>
+          </p>
         </Typography>
         <br/>
         <TextField required name="email" label="Email" variant="outlined"  onChange={handleChangeEmail} />

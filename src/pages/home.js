@@ -1,6 +1,5 @@
 import Header from '../components/header'
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box';
 
 const Home = () =>   {
   return (
